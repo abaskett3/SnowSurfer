@@ -6,15 +6,23 @@ public class CrashDetector : MonoBehaviour
     private int sceneIndex = 0;
     [SerializeField] float reloadSceneDelay = 1f;
     [SerializeField] ParticleSystem CrashParticles;
+
+    PlayerController playerController;
+
+    void Start()
+    {
+        playerController = FindFirstObjectByType<PlayerController>();
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         int layerIndex = LayerMask.NameToLayer("Floor");
         if (collision.gameObject.layer == layerIndex)
         {
+            playerController.DisableControls();
             CrashParticles.Play();
             Invoke("ReloadScene", reloadSceneDelay);
         }
-
 
     }
     void ReloadScene()
