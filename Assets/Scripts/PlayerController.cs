@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         powerupParticles.Stop();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 moveVector = moveAction.ReadValue<Vector2>();
         if (canControlPlayer)

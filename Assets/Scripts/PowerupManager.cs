@@ -26,7 +26,7 @@ public class PowerupManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CountDownTimer();
     }
